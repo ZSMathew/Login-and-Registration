@@ -15,7 +15,7 @@ const RegLog = () => {
         <div className="inputs">
             <div className="input"> 
              <img src={user_icon} alt='' /> 
-             <input type='text' placeholder='Username'/> 
+             <input type='text' placeholder='Name'/> 
             </div>
             <div className="input"> 
              <img src={email_icon} alt='' /> 
