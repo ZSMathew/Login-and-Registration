@@ -1,25 +1,29 @@
-import React, { useState } from 'react'
-import './RegLog.css' 
-import axios from "axios"
+import React, { useState } from 'react';
+import './RegLog.css' ;
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
-import user_icon from './assets/person.jpg'
-import email_icon from './assets/email.jpg'
-import password_icon from './assets/password.jpg'
+import user_icon from './assets/person.jpg';
+import email_icon from './assets/email.jpg';
+import password_icon from './assets/password.jpg';
 
 
 const RegLog = () => {
 
-   const [action,setAction] = useState("Login");
 
+  const navigate = useNavigate();
+   const [action,setAction] = useState("Login");
 
    const[form, setForm] = useState({
     name:"",
     email:"",
     password:""
    });
-
+      // HANDLE INPUT
    const handleChange = (e)=>{
-    setForm({...form, [e.target.placeholder.toLowerCase()]: e.target.value});
+    setForm({...form,
+       [e.target.placeholder.toLowerCase()]: 
+       e.target.value});
    };
 
    // SUBMIT FUNCTION 
@@ -30,7 +34,16 @@ const RegLog = () => {
         alert("Please fill all fields");
         return;
       }
+
+      // REQUEST FOR SIGN UP
+      if (action === "Sign Up" && !form.name) {
+        alert("Please fill all fields");
+        return;
+      }
+
       try {
+
+        // SELECTING API ENDPOINT BASED ON ACTION
         if (action ==="Sign Up") {
           const res = await axios.post("http://localhost/login-and-registration/Reg-Log/src/register.php", form);
           console.log(res.data);
@@ -77,7 +90,7 @@ const RegLog = () => {
              placeholder='Email' 
              value={form.email} 
              onChange={handleChange} /> 
-              
+
             </div>
             <div className="input"> 
              <img src={password_icon} alt='' /> 
