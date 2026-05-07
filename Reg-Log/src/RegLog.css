@@ -21,11 +21,12 @@
     color: #FFFFFF;
     font-size: 48px;
     font-weight: 700;
+    padding-bottom: 15px;
 }
 .underline {
     width: 61px;
     height: 6px;
-    background: #3c009d;
+    background: black;
     border-radius: 9px;
 }
 
